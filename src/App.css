@@ -1,38 +1,102 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color:wheat;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  font-family: 'Roboto', sans-serif;
+  width: 900px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  font-size: 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.imageGrid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.image {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.addButton {
+  margin: 1rem;
+  color:hotpink;
+  background-color: yellowgreen;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid azure;
+
+}
+
+.addButton:hover {
+  background-color: cadetblue;
+  color: blueviolet;
+  cursor: pointer;
+}
+
+.remove {
+  font-size: 10px;
+  border-radius: 25px;
+  display: block;
+  position: relative;
+  top: -25px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1;
+}
+
+.modal img {
+  display: block;
+  margin: 60px auto;
+  margin-top: 80px;
+  box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
+  border: 3px solid white;
+}
+
+@media (max-width: 900px) {
+  #root {
+    width: 600px;
   }
-  to {
-    transform: rotate(360deg);
+  .modal img {
+    max-width: 100%;
+    height: auto;
   }
+}
+
+@media (max-width: 600px) {
+  #root {
+    width: 300px;
+  }
+  .imageGrid {
+    flex-direction: column;
+  }
+  .remove {
+    left: 25px
+  }
+  
 }
