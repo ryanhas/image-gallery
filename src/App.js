@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
-import { motion, AnimateSharedLayout } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const imageSize = 250;
 const modalSize = 550;
@@ -42,7 +42,7 @@ function Image(props) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        transition={{ delay: 0.5 }}
       >
         <img
           alt="Loading ..."
@@ -75,9 +75,9 @@ class ImageGallery extends React.Component {
   
   render() {
     return (
-      <AnimateSharedLayout>
-        <motion.div layout className='gallery'>
-          <button className='addButton' onClick={this.addImage}>Load new Image</button>
+      
+        <div className='gallery'>
+        <button className='addButton' onClick={this.addImage}>Load new Image</button>
           <motion.div layout className='imageGrid'>
             {this.props.links.map((link) => {
             return <Image 
@@ -88,10 +88,7 @@ class ImageGallery extends React.Component {
             />
           })}
           </motion.div>
-        </motion.div>
-      </AnimateSharedLayout>
-      
-      
+        </div>
     );
   }
 }
@@ -146,10 +143,13 @@ class App extends React.Component {
     })
   }
 
-  dismissModal = () => {
-    this.setState({
-      modal: null
-    })
+  dismissModal = (e) => {
+    if (e.target.nodeName === "DIV") {
+      this.setState({
+        modal: null
+     })
+    }
+    
   }
 
   render() {
